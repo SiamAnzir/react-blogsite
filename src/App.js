@@ -3,7 +3,7 @@ import {Switch, BrowserRouter as Router , Route, Link} from "react-router-dom"
 import {Navbar, Nav,Container, Row } from "react-bootstrap";
 import logo from "./logo.svg"
 import Home from "./Components/Home";
-import allBlogs from "./Components/Blogs";
+import AllBlogs from "./Components/AllBlogs";
 import './App.css';
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
             </Navbar>
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route exact path="/allBlogs" component={allBlogs}/>
+                <Route exact path="/allBlogs" component={AllBlogs}/>
                 <Route exact path="/createBlogs" component={Home}/>
                 <Route exact path="/contact" component={Home}/>
                 <Route path="*" component={() => "404 NOT FOUND"} />

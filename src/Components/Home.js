@@ -15,6 +15,7 @@ const Home = () => {
             </Jumbotron>
             <Container>
                 <h1>Favourite Blogs: </h1>
+
             </Container>
         </section>
 
