@@ -4,6 +4,7 @@ import {Navbar, Nav,Container, Row } from "react-bootstrap";
 import logo from "./logo.svg"
 import Home from "./Components/Home";
 import AllBlogs from "./Components/AllBlogs";
+import CreateBlog from "./Components/CreateBlog";
 import './App.css';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                             className="d-inline-block align-top"
                         /> React BlogSite</Navbar.Brand>
                     <Nav className="ml-auto">
-                        <Nav.Link  href="/">Home</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/allBlogs">All Blogs</Nav.Link>
                         <Nav.Link href="/createBlogs">Create Blogs</Nav.Link>
                         <Nav.Link href="/contact">Contact</Nav.Link>
@@ -31,7 +32,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/allBlogs" component={AllBlogs}/>
-                <Route exact path="/createBlogs" component={Home}/>
+                <Route exact path="/createBlogs" component={CreateBlog}/>
                 <Route exact path="/contact" component={Home}/>
                 <Route path="*" component={() => "404 NOT FOUND"} />
             </Switch>
