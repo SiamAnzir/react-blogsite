@@ -1,23 +1,19 @@
 import React, {useState} from "react";
 import {blogLists} from "./BlogsData";
 import {Container, Form, Button} from "react-bootstrap";
-import Blogs from "./BlogLists";
+import {Redirect} from "react-router-dom";
 
-const CreateBlog = () => {
+const CreateBlog = (props) => {
 
-    const [blogs , setNewBlogs] = useState(blogLists);
+    //const [blogs , setNewBlogs] = useState(blogLists);
 
     const initialBlogState = {id:null,title:"",description:"",author:""};
     const [newBlogs , setCreatedBlogs] = useState(initialBlogState);
 
-    const addBlog = (newBlog) => {
-        newBlog.id = blogs.length + 1;
-        setNewBlogs([...blogs , newBlog]);
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addBlog(newBlogs);
+        props.addBlog(newBlogs);
         event.target.reset();
     }
 
@@ -47,7 +43,6 @@ const CreateBlog = () => {
                     </Form.Group>
                     <Button variant="success" type="submit">Create New Blog</Button>
                 </Form>
-                <Blogs blogs={blogs}/>
             </Container>
         </section>
     )
