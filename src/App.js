@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Switch, BrowserRouter as Router , Route, Link} from "react-router-dom"
-import {Navbar, Nav,Container, NavLink } from "react-bootstrap";
-import logo from "./logo.svg"
+import {Container} from "react-bootstrap";
+import NavBar from "./components/navBar";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
 import {blogLists} from "./components/BlogsData";
@@ -9,40 +9,32 @@ import Blogs from "./components/BlogLists";
 import useLocalStorage from "./hooks/useLocalStorage";
 import './App.css';
 
-function App() {
+const App = () => {
 
     const [blogs , setBlogs] = useLocalStorage('blogs', blogLists);
+    const initialBlogState = {id:null,title:"",description:"",author:""};
+    const [currentBlog, setCurrentBlog] = useState(initialBlogState);
+    const [editing,setEditing] = useState(false);
+    const [favourite,setFavourite] = useState(false);
 
     const addBlog = (newBlog) => {
         newBlog.id = blogs.length + 1;
         setBlogs([...blogs , newBlog]);
     }
-
+    const deleteBlog = (blogId) => {
+        setEditing(false);
+        setBlogs(blogs.filter((blog) => {
+            return blog.id !== blogId;
+        }));
+    }
     return (
         <>
             <Router>
-                <Navbar bg="dark" variant="dark">
-                    <Container>
-                        <Navbar.Brand href="/">
-                            <img
-                                alt="logo"
-                                src={logo}
-                                width="30"
-                                height="30"
-                                className="d-inline-block align-top"
-                            /> React BlogSite</Navbar.Brand>
-                        <Nav className="ml-auto">
-                            <NavLink href="/" >Home</NavLink>
-                            <NavLink href="/allBlogs">All Blogs</NavLink>
-                            <NavLink href="/createBlogs">Create Blogs</NavLink>
-                            <NavLink href="/contact">Contact</NavLink>
-                        </Nav>
-                    </Container>
-                </Navbar>
+                <NavBar/>
                 <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route render={() => (<Blogs blogs={blogs}/>)} exact path="/allBlogs"/>
-                    <Route render={() => (<CreateBlog addBlog={addBlog}/>)} exact path="/createBlogs" />
+                    <Route render={() => (<Blogs blogs={blogs} deleteBlog={deleteBlog}/>)} exact path="/allBlogs"/>
+                    <Route render={(props) => (<CreateBlog {...props} addBlog={addBlog}/>)} exact path="/createBlogs" />
                     <Route exact path="/contact" component={Home}/>
                     <Route path="*" component={() => "404 NOT FOUND"} />
                 </Switch>

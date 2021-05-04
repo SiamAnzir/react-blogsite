@@ -3,7 +3,7 @@ import {blogLists} from "./BlogsData";
 import {Container, Form, Button} from "react-bootstrap";
 import {Redirect} from "react-router-dom";
 
-const CreateBlog = (props) => {
+const CreateBlog = ({history,addBlog}) => {
 
     //const [blogs , setNewBlogs] = useState(blogLists);
 
@@ -13,8 +13,9 @@ const CreateBlog = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.addBlog(newBlogs);
+        addBlog(newBlogs);
         event.target.reset();
+        history.push('/allBlogs');
     }
 
     const handleInputChange = (event) => {

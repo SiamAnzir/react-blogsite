@@ -1,6 +1,6 @@
 import React from "react";
 import blogImage from "../assets/images/background.jpg";
-import {Navbar, Nav, Form, FormControl, Button, Container, Card, Media} from "react-bootstrap"
+import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
 
 const Blogs = (props) => {
 
@@ -8,7 +8,11 @@ const Blogs = (props) => {
         props.blogs.map(blog => (
             <>
                 <Card key={blog.id}>
-                    <Card.Header  className="text-center"> Author Name: {blog.author}</Card.Header>
+                    <Card.Header  className="text-right border-0">
+                        <Button variant="primary" type="submit"> + Favourites</Button>||
+                        <Button variant="success" type="submit">Update</Button>||
+                        <Button variant="danger" onClick={() =>  props.deleteBlog(blog.id)}>Delete</Button>
+                    </Card.Header>
                     <Card.Body>
                         <Media>
                             <img
@@ -26,7 +30,14 @@ const Blogs = (props) => {
                             </Media.Body>
                         </Media>
                     </Card.Body>
-                    <Card.Footer className="text-center">2 days ago</Card.Footer>
+                    <Card.Footer className="border-0">
+                        <Container>
+                            <Row>
+                                <Col className="text-left">2 days ago</Col>
+                                <Col className="text-right"> Author Name: {blog.author}</Col>
+                            </Row>
+                        </Container>
+                    </Card.Footer>
                 </Card>
                 <br/>
             </>
