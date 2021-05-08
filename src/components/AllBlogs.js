@@ -7,18 +7,20 @@ const AllBlogs = (props) => {
 
     const history = useHistory();
 
-    const submitUpdateButton = (blog, id)=> {
-        props.clickUpdateButton(blog);
-        history.push(`/editBlog/${id}`);
+    const deleteBlog = (blogId) => {
+        props.setBlogs(props.blogs.filter((blog) => {
+            return blog.id !== blogId;
+        }));
     }
+
     const Blogs = props.blogs.length > 0 ? (
         props.blogs.map(blog => (
             <>
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
                         <Button variant="primary" type="submit"> + Favourites</Button>||
-                        <Button variant="success" onClick={() => submitUpdateButton(blog , blog.id)}>Update</Button>||
-                        <Button variant="danger" onClick={() =>  props.deleteBlog(blog.id)}>Delete</Button>
+                        <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
+                        <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
                     </Card.Header>
                     <Card.Body>
                         <Media>

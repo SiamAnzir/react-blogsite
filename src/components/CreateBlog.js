@@ -3,9 +3,14 @@ import {blogLists} from "./BlogsData";
 import {Container, Form, Button} from "react-bootstrap";
 import {Redirect} from "react-router-dom";
 
-const CreateBlog = ({history,addBlog}) => {
+const CreateBlog = ({history,blogs,setBlogs}) => {
 
     //const [blogs , setNewBlogs] = useState(blogLists);
+
+    const addBlog = (newBlog) => {
+        newBlog.id = blogs.length + 1;
+        setBlogs([...blogs , newBlog]);
+    }
 
     const initialBlogState = {id:null,title:"",description:"",author:""};
     const [newBlogs , setCreatedBlogs] = useState(initialBlogState);
