@@ -12,7 +12,7 @@ const CreateBlog = ({history,blogs,setBlogs}) => {
         setBlogs([...blogs , newBlog]);
     }
 
-    const initialBlogState = {id:null,title:"",description:"",author:""};
+    const initialBlogState = {id:null,title:"",description:"",author:"",created_at:new Date().toDateString(),favourite_blog:false};
     const [newBlogs , setCreatedBlogs] = useState(initialBlogState);
 
 

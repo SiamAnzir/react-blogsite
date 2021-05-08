@@ -12,13 +12,17 @@ const AllBlogs = (props) => {
             return blog.id !== blogId;
         }));
     }
-
+    /**
+    const handleFavouriteBlog = (blogId) => {
+        props.setBlogs(props.blogs[blogId].favourite_blog = true);
+        blog.favourite_blog = true
+    }**/
     const Blogs = props.blogs.length > 0 ? (
         props.blogs.map(blog => (
             <>
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
-                        <Button variant="primary" type="submit"> + Favourites</Button>||
+                        <Button variant="primary"> + Favourites</Button>||
                         <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
                         <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
                     </Card.Header>
@@ -42,7 +46,7 @@ const AllBlogs = (props) => {
                     <Card.Footer className="border-0">
                         <Container>
                             <Row>
-                                <Col className="text-left">2 days ago</Col>
+                                <Col className="text-left">Created At: {blog.created_at}</Col>
                                 <Col className="text-right"> Author Name: {blog.author}</Col>
                             </Row>
                         </Container>
