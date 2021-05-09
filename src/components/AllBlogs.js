@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import blogImage from "../assets/images/background.jpg";
 import { useHistory } from "react-router-dom";
 import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
@@ -6,23 +6,24 @@ import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
 const AllBlogs = (props) => {
 
     const history = useHistory();
-
     const deleteBlog = (blogId) => {
         props.setBlogs(props.blogs.filter((blog) => {
             return blog.id !== blogId;
         }));
     }
-    /**
-    const handleFavouriteBlog = (blogId) => {
-        props.setBlogs(props.blogs[blogId].favourite_blog = true);
-        blog.favourite_blog = true
-    }**/
+
+    const handleFavouriteBlog = (blogId,favBlog) => {
+        favBlog.favourite_blog = true;
+        props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? favBlog : blog)));
+        console.log(props.blogs);
+    }
+
     const Blogs = props.blogs.length > 0 ? (
         props.blogs.map(blog => (
             <>
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
-                        <Button variant="primary"> + Favourites</Button>||
+                        <Button variant="primary" onClick={() => handleFavouriteBlog(blog.id,blog)}> + Favourites</Button>||
                         <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
                         <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
                     </Card.Header>

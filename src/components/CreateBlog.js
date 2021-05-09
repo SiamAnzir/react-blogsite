@@ -5,8 +5,6 @@ import {Redirect} from "react-router-dom";
 
 const CreateBlog = ({history,blogs,setBlogs}) => {
 
-    //const [blogs , setNewBlogs] = useState(blogLists);
-
     const addBlog = (newBlog) => {
         newBlog.id = blogs.length + 1;
         setBlogs([...blogs , newBlog]);

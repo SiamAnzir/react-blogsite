@@ -2,25 +2,22 @@ import React from "react";
 import {Container , Jumbotron,Card } from "react-bootstrap";
 import bgImage from "../assets/images/blog-listing.jpg";
 
-const Home = () => {
+const Home = (props) => {
 
-    /**
-     * //const favBlog = props.blogs.map(blog => blog);
-     * {props.blogs.map(blog => blog.favourite_blog === true) ? (
+     const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
                         <Card>
                             <Card.Header>
-                                {favBlog.title}
+                                {blog.title}
                             </Card.Header>
                             <Card.Body>
-                                {favBlog.body}
+                                {blog.description}
                             </Card.Body>
                         </Card>
                         ) : (
                         <div>
-                            <h5>No Blog Added to favourites</h5>
                         </div>
-                    )
-                    } **/
+                    ));
+
     return(
         <section>
             <Jumbotron style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', height: '400px' }} fluid>
@@ -34,7 +31,7 @@ const Home = () => {
             <Container>
                 <h1>Favourite Blogs: </h1>
                 <div>
-
+                    {favBlog}
                 </div>
             </Container>
         </section>
