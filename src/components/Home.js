@@ -1,18 +1,25 @@
 import React from "react";
-import {Container , Jumbotron,Card } from "react-bootstrap";
+import {Container, Jumbotron, Card, CardGroup, Row, Col} from "react-bootstrap";
 import bgImage from "../assets/images/blog-listing.jpg";
+import blogImage from "../assets/images/background.jpg";
 
 const Home = (props) => {
 
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
-                        <Card>
-                            <Card.Header>
-                                {blog.title}
-                            </Card.Header>
-                            <Card.Body>
-                                {blog.description}
-                            </Card.Body>
-                        </Card>
+                         <Col className="col-lg-6 col-md-12">
+                             <Card style={{ width: '25rem' }}>
+                                 <Card.Img variant="top" alt="Card image" width={300} height={300} src={blogImage} />
+                                 <Card.Body>
+                                     <Card.Title>{blog.title}</Card.Title>
+                                     <Card.Text>
+                                         {blog.description}
+                                     </Card.Text>
+                                 </Card.Body>
+                                 <Card.Footer className="text-right">
+                                     <small className="text-muted">Author Name: {blog.author}</small>
+                                 </Card.Footer>
+                             </Card>
+                         </Col>
                         ) : (
                         <div>
                         </div>
@@ -30,8 +37,11 @@ const Home = (props) => {
             </Jumbotron>
             <Container>
                 <h1>Favourite Blogs: </h1>
+                <br/>
                 <div>
-                    {favBlog}
+                    <Row>
+                        {favBlog}
+                    </Row>
                 </div>
             </Container>
         </section>

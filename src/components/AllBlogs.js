@@ -6,12 +6,20 @@ import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
 const AllBlogs = (props) => {
 
     const history = useHistory();
+
     const deleteBlog = (blogId) => {
         props.setBlogs(props.blogs.filter((blog) => {
             return blog.id !== blogId;
         }));
     }
-
+    /**
+    const favouriteButton = (id , clickedBlog) => {
+        props.blogs.map(blog => (blog.favourite_blog === false ? (
+            <Button variant="primary" onClick={() => handleFavouriteBlog(id,clickedBlog)}> + Favourites </Button>
+        ) : (
+            <Button variant="warning" onClick={() => handleFavouriteBlog(id,clickedBlog)}> Remove from Favourites </Button>
+        )))
+    } **/
     const handleFavouriteBlog = (blogId,favBlog) => {
         favBlog.favourite_blog = true;
         props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? favBlog : blog)));
@@ -23,7 +31,7 @@ const AllBlogs = (props) => {
             <>
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
-                        <Button variant="primary" onClick={() => handleFavouriteBlog(blog.id,blog)}> + Favourites</Button>||
+                        <Button variant="primary" onClick={() => handleFavouriteBlog(blog.id,blog)}> + Favourites </Button> ||
                         <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
                         <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
                     </Card.Header>
