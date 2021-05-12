@@ -2,36 +2,52 @@ import React, {useState} from "react";
 import blogImage from "../assets/images/background.jpg";
 import { useHistory } from "react-router-dom";
 import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
+import Pagination from "react-js-pagination";
 
 const AllBlogs = (props) => {
 
     const history = useHistory();
+
+    const blogsPerPage = 2;
+    const [ activePage, setCurrentPage ] = useState( 1 );
+
+    // Logic for displaying current todos
+    const indexOfLastBlog  = activePage * blogsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+    const currentBlogs     = props.blogs.slice( indexOfFirstBlog, indexOfLastBlog );
+
+    const handlePageChange = ( pageNumber ) => {
+        console.log( `active page is ${ pageNumber }` );
+        setCurrentPage( pageNumber )
+    };
 
     const deleteBlog = (blogId) => {
         props.setBlogs(props.blogs.filter((blog) => {
             return blog.id !== blogId;
         }));
     }
-    /**
-    const favouriteButton = (id , clickedBlog) => {
-        props.blogs.map(blog => (blog.favourite_blog === false ? (
-            <Button variant="primary" onClick={() => handleFavouriteBlog(id,clickedBlog)}> + Favourites </Button>
-        ) : (
-            <Button variant="warning" onClick={() => handleFavouriteBlog(id,clickedBlog)}> Remove from Favourites </Button>
-        )))
-    } **/
-    const handleFavouriteBlog = (blogId,favBlog) => {
-        favBlog.favourite_blog = true;
-        props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? favBlog : blog)));
+
+    const addToFavouriteBlog = (blogId,selectedBlog) => {
+        selectedBlog.favourite_blog = true;
+        props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
+        console.log(props.blogs);
+    }
+    const removeFromFavouriteBlog = (blogId,selectedBlog) => {
+        selectedBlog.favourite_blog = false;
+        props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
         console.log(props.blogs);
     }
 
     const Blogs = props.blogs.length > 0 ? (
-        props.blogs.map(blog => (
+        currentBlogs.map(blog => (
             <>
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
-                        <Button variant="primary" onClick={() => handleFavouriteBlog(blog.id,blog)}> + Favourites </Button> ||
+                        {(blog.favourite_blog === false ?  (
+                        <Button variant="primary" onClick={() => addToFavouriteBlog(blog.id,blog)}> (+) To Favourites </Button>
+                        ) : (
+                        <Button variant="warning" onClick={() => removeFromFavouriteBlog(blog.id,blog)}> (-) from Favourites </Button>
+                        ))} ||
                         <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
                         <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
                     </Card.Header>
@@ -71,9 +87,23 @@ const AllBlogs = (props) => {
         <section>
             <Container>
                 <div>
-                    <h1> All Blogs: </h1>
+                    <h1 className="text-center"> All Blogs: </h1>
                 </div>
+                <br/>
                 {Blogs}
+                <Row className="text-center">
+                    <Pagination
+                        previousLabel={"prev"}
+                        nextLabel={"next"}
+                        activePage={ activePage }
+                        itemsCountPerPage={ 2 }
+                        totalItemsCount={ props.blogs.length }
+                        pageRangeDisplayed={ 7 }
+                        onChange={ handlePageChange }
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                    />
+                </Row>
             </Container>
         </section>
     );

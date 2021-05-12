@@ -20,7 +20,7 @@ const App = () => {
             <Router>
                 <NavBar/>
                 <Switch>
-                    <Route render={() => (<Home blogs={blogs}/>)} exact path="/"/>
+                    <Route render={() => (<Home blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>
                     <Route render={() => (<AllBlogs blogs={blogs} setBlogs={setBlogs} />)} exact path="/allBlogs"/>
                     <Route render={(props) => (<CreateBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/createBlogs" />
                     <Route render={(props) => (<EditBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/editBlog/:id"/>

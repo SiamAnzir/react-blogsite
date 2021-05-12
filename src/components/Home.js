@@ -1,22 +1,34 @@
-import React from "react";
-import {Container, Jumbotron, Card, CardGroup, Row, Col} from "react-bootstrap";
+import React, {useState} from "react";
+import {Container, Jumbotron, Card, CardGroup, Row, Col , Button} from "react-bootstrap";
 import bgImage from "../assets/images/blog-listing.jpg";
 import blogImage from "../assets/images/background.jpg";
 
 const Home = (props) => {
 
+     const removeFavBlog = (blogId,selectedBlog) => {
+         selectedBlog.favourite_blog = false;
+         props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
+         console.log(props.blogs);
+     };
+
+
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
                          <Col className="col-lg-6 col-md-12">
                              <Card style={{ width: '25rem' }}>
-                                 <Card.Img variant="top" alt="Card image" width={300} height={300} src={blogImage} />
+                                 <Card.Img variant="top" alt="Card image" width={300} height={300} src={blogImage}/>
                                  <Card.Body>
                                      <Card.Title>{blog.title}</Card.Title>
                                      <Card.Text>
                                          {blog.description}
                                      </Card.Text>
                                  </Card.Body>
-                                 <Card.Footer className="text-right">
-                                     <small className="text-muted">Author Name: {blog.author}</small>
+                                 <Card.Footer className="border-0">
+                                     <Container>
+                                         <Row>
+                                             <Col className="text-left">Author Name: {blog.author}</Col>
+                                             <Col className="text-right"><Button variant="danger" onClick={() => removeFavBlog(blog.id , blog)}>(-)Remove</Button> </Col>
+                                         </Row>
+                                     </Container>
                                  </Card.Footer>
                              </Card>
                          </Col>
