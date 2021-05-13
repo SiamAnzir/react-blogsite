@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.read-more-link{
+  color: blueviolet;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
 .pagination {
   margin: 15px auto;
   display: flex;

@@ -98,7 +98,7 @@ const AllBlogs = (props) => {
                         activePage={ activePage }
                         itemsCountPerPage={ 2 }
                         totalItemsCount={ props.blogs.length }
-                        pageRangeDisplayed={ 7 }
+                        pageRangeDisplayed={ 5 }
                         onChange={ handlePageChange }
                         containerClassName={"pagination"}
                         subContainerClassName={"pages pagination"}
