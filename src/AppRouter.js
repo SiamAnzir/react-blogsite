@@ -17,7 +17,7 @@ const AppRouter = () => {
 
     return (
         <>
-            <Router>
+            <Router basename="/">
                 <NavBar/>
                 <Switch>
                     <Route render={() => (<Home blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>
