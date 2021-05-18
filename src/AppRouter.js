@@ -24,7 +24,7 @@ const AppRouter = () => {
                     <Route render={() => (<AllBlogs blogs={blogs} setBlogs={setBlogs} />)} exact path="/allBlogs"/>
                     <Route render={(props) => (<CreateBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/createBlogs" />
                     <Route render={(props) => (<EditBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/editBlog/:id"/>
-                    <Route exact path="react-blogsite/contact" component={contactPage}/>
+                    <Route exact path="/contact" component={contactPage}/>
                     <Route path="*" component={() => "404 NOT FOUND"} />
                 </Switch>
             </Router>
