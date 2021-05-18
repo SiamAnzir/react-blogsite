@@ -36,11 +36,11 @@ const Home = (props) => {
                                      {readMore.id === blog.id && readMore.readMoreState ?
                                          (<Card.Text>
                                              {blog.description}
-                                             <a className="read-more-link"  onClick={()=>{readLessButton(blog.id)}}><p>Read Less </p></a>
+                                             <span className="read-more-link"  onClick={()=>{readLessButton(blog.id)}}><p>Read Less </p></span>
                                          </Card.Text>):
                                          (<Card.Text>
                                              {blog.description.slice(0,40)}
-                                             <a className="read-more-link"  onClick={()=>{readMoreButton(blog.id)}}><p>Read More</p></a>
+                                             <span className="read-more-link"  onClick={()=>{readMoreButton(blog.id)}}><p>Read More</p></span>
                                          </Card.Text>)
 
                                      }

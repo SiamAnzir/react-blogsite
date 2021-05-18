@@ -11,7 +11,6 @@ const AllBlogs = (props) => {
     const blogsPerPage = 2;
     const [ activePage, setCurrentPage ] = useState( 1 );
 
-    // Logic for displaying current todos
     const indexOfLastBlog  = activePage * blogsPerPage;
     const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
     const currentBlogs     = props.blogs.slice( indexOfFirstBlog, indexOfLastBlog );

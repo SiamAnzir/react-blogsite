@@ -1,7 +1,5 @@
 import React, {useState} from "react";
-import {blogLists} from "./BlogsData";
 import {Container, Form, Button} from "react-bootstrap";
-import {Redirect} from "react-router-dom";
 
 const CreateBlog = ({history,blogs,setBlogs}) => {
 
