@@ -3,6 +3,8 @@ import blogImage from "../assets/images/background.jpg";
 import { useHistory } from "react-router-dom";
 import { Container, Card, Media, Button , Row, Col} from "react-bootstrap"
 import Pagination from "react-js-pagination";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBan, faPenAlt, faPlus,faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 
 const AllBlogs = (props) => {
 
@@ -43,12 +45,12 @@ const AllBlogs = (props) => {
                 <Card key={blog.id}>
                     <Card.Header  className="text-right border-0">
                         {(blog.favourite_blog === false ?  (
-                        <Button variant="primary" onClick={() => addToFavouriteBlog(blog.id,blog)}> (+) To Favourites </Button>
+                        <Button variant="primary" onClick={() => addToFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faPlus} /> To Favourites </Button>
                         ) : (
-                        <Button variant="warning" onClick={() => removeFromFavouriteBlog(blog.id,blog)}> (-) from Favourites </Button>
+                        <Button variant="warning" onClick={() => removeFromFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faBan} /> from Favourites </Button>
                         ))} ||
-                        <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}>Update</Button>||
-                        <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}>Delete</Button>
+                        <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}><FontAwesomeIcon icon={faPenAlt} /> Update</Button>||
+                        <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}> <FontAwesomeIcon icon={faTrashAlt} /> Delete</Button>
                     </Card.Header>
                     <Card.Body>
                         <Media>

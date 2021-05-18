@@ -1,8 +1,9 @@
-import React from "react";
-import {Container, Nav, Navbar, NavLink} from "react-bootstrap";
+import React,{useState ,useContext} from "react";
+import { Button, Container, Nav, Navbar, NavLink} from "react-bootstrap";
 import logo from "../logo.svg";
 
 const NavBar = () => {
+
     return(
         <Navbar bg="dark" variant="dark">
             <Container>
