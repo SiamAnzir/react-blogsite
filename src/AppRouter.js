@@ -20,10 +20,10 @@ const AppRouter = () => {
             <Router>
                 <NavBar/>
                 <Switch>
-                    <Route render={() => (<Home blogs={blogs} setBlogs={setBlogs}/>)} exact path="react-blogsite/"/>
-                    <Route render={() => (<AllBlogs blogs={blogs} setBlogs={setBlogs} />)} exact path="react-blogsite/allBlogs"/>
-                    <Route render={(props) => (<CreateBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="react-blogsite/createBlogs" />
-                    <Route render={(props) => (<EditBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="react-blogsite/editBlog/:id"/>
+                    <Route render={() => (<Home blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>
+                    <Route render={() => (<AllBlogs blogs={blogs} setBlogs={setBlogs} />)} exact path="/allBlogs"/>
+                    <Route render={(props) => (<CreateBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/createBlogs" />
+                    <Route render={(props) => (<EditBlog {...props} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/editBlog/:id"/>
                     <Route exact path="react-blogsite/contact" component={contactPage}/>
                     <Route path="*" component={() => "404 NOT FOUND"} />
                 </Switch>
