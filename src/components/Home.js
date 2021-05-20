@@ -7,6 +7,11 @@ import {faBan} from "@fortawesome/free-solid-svg-icons";
 
 const Home = (props) => {
 
+    /** style={{
+            backgroundColor: props.state.background,
+            color: props.state.foreground
+        }} **/
+
      const [readMore,setReadMore] = useState({id:null , readMoreState:false});
 
      const readMoreButton = (blogId) => {
@@ -30,8 +35,12 @@ const Home = (props) => {
 
 
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
-                         <Col className="col-lg-6 col-md-12">
-                             <Card style={{ width: '25rem' }} key={blog.id}>
+                         <Col className="col-lg-6 col-md-12" >
+                             <Card border="info" style={{
+                                 width: '25rem',
+                                 backgroundColor: props.themeState.background,
+                                 color: props.themeState.foreground
+                             }}  key={blog.id}>
                                  <Card.Img variant="top" alt="Card image" width={300} height={300} src={blogImage}/>
                                  <Card.Body>
                                      <Card.Title>{blog.title}</Card.Title>
@@ -63,16 +72,20 @@ const Home = (props) => {
                     ));
 
     return(
-        <section>
+        <section style={{
+            backgroundColor: props.themeState.background,
+        }}>
             <Jumbotron style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', height: '400px' }} fluid>
-                <Container >
+                <Container>
                     <h1>React BlogSite</h1>
                     <p className="lead">
                         Create Your Own blog, Update it whenever it needs, Delete it if you don't like it and also Read other's Blog.!!
                     </p>
                 </Container>
             </Jumbotron>
-            <Container>
+            <Container style={{
+                color: props.themeState.foreground
+            }}>
                 <h1>Favourite Blogs: </h1>
                 <br/>
                 <div>

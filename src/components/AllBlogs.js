@@ -42,15 +42,18 @@ const AllBlogs = (props) => {
     const Blogs = props.blogs.length > 0 ? (
         currentBlogs.map(blog => (
             <>
-                <Card key={blog.id}>
+                <Card key={blog.id} border="info" style={{
+                    backgroundColor: props.themeState.background,
+                    color: props.themeState.foreground
+                }}>
                     <Card.Header  className="text-right border-0">
                         {(blog.favourite_blog === false ?  (
-                        <Button variant="primary" onClick={() => addToFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faPlus} /> To Favourites </Button>
+                        <Button variant="primary" style={{ marginLeft: '.5rem' }} onClick={() => addToFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faPlus} /> To Favourites </Button>
                         ) : (
-                        <Button variant="warning" onClick={() => removeFromFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faBan} /> from Favourites </Button>
-                        ))} ||
-                        <Button variant="success" onClick={() => history.push(`/editBlog/${blog.id}`)}><FontAwesomeIcon icon={faPenAlt} /> Update</Button>||
-                        <Button variant="danger" onClick={() =>  deleteBlog(blog.id)}> <FontAwesomeIcon icon={faTrashAlt} /> Delete</Button>
+                        <Button variant="warning" style={{ marginLeft: '.5rem' }} onClick={() => removeFromFavouriteBlog(blog.id,blog)}><FontAwesomeIcon icon={faBan} /> from Favourites </Button>
+                        ))}
+                        <Button variant="success" style={{ marginLeft: '.5rem' }} onClick={() => history.push(`/editBlog/${blog.id}`)}><FontAwesomeIcon icon={faPenAlt} /> Update</Button>
+                        <Button variant="danger" style={{ marginLeft: '.5rem' }} onClick={() =>  deleteBlog(blog.id)}> <FontAwesomeIcon icon={faTrashAlt} /> Delete</Button>
                     </Card.Header>
                     <Card.Body>
                         <Media>
@@ -85,7 +88,10 @@ const AllBlogs = (props) => {
         <div><h2>There is nothing to show</h2></div>
     )
     return(
-        <section>
+        <section style={{
+            backgroundColor: props.themeState.background,
+            color: props.themeState.foreground
+        }}>
             <Container>
                 <div>
                     <h1 className="text-center"> All Blogs: </h1>
@@ -105,6 +111,7 @@ const AllBlogs = (props) => {
                         subContainerClassName={"pages pagination"}
                     />
                 </Row>
+                <br/>
             </Container>
         </section>
     );

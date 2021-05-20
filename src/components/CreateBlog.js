@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Container, Form, Button} from "react-bootstrap";
 
-const CreateBlog = ({history,blogs,setBlogs}) => {
+const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
 
     const addBlog = (newBlog) => {
         newBlog.id = blogs.length + 1;
@@ -26,7 +26,10 @@ const CreateBlog = ({history,blogs,setBlogs}) => {
 
 
     return(
-        <section>
+        <section style={{
+            backgroundColor: themeState.background,
+            color: themeState.foreground
+        }}>
             <Container className="text-center">
                 <br/>
                 <h2>Create Your Blog</h2>
@@ -45,6 +48,7 @@ const CreateBlog = ({history,blogs,setBlogs}) => {
                     </Form.Group>
                     <Button variant="success" type="submit">Create New Blog</Button>
                 </Form>
+                <br/>
             </Container>
         </section>
     )

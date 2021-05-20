@@ -3,7 +3,7 @@ import { Button, Container, Nav, Navbar, NavLink} from "react-bootstrap";
 import logo from "../logo.svg";
 import {Link} from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
 
     return(
         <Navbar bg="dark" variant="dark">
@@ -23,6 +23,17 @@ const NavBar = () => {
                     <Nav className="nav-link"><Link to="/contact" className="text-white"> Contact</Link> </Nav>
                 </Nav>
             </Container>
+            {
+                (props.themeState === props.theme.light) ? (
+                    <Button variant="light" onClick={props.darkMode}>
+                        <span role="img" aria-label="sun"> 🌞 </span>
+                    </Button>
+                ):(
+                    <Button variant="dark" onClick={props.lightMode}>
+                        <span role="img" aria-label="moon">  🌚 </span>
+                    </Button>
+                )
+            }
         </Navbar>
     )
 }

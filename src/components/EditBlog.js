@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Container, Form} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
-const EditBlog = ({history, blogs , setBlogs}) => {
+const EditBlog = ({history, themeState, blogs , setBlogs}) => {
     const { id } = useParams();
     const blogToEdit = blogs[id - 1];
     const [currentBlog, setCurrentBlog] = useState(blogToEdit);
@@ -21,11 +21,14 @@ const EditBlog = ({history, blogs , setBlogs}) => {
         history.push('/allBlogs');
     }
     return(
-        <section>
+        <section style={{
+            backgroundColor: themeState.background,
+            color: themeState.foreground
+        }}>
             <Container className="text-center">
                 <br/>
                 <h2>Update Your Blog</h2>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} >
                     <Form.Group>
                         <Form.Label> Author Name: </Form.Label>
                         <Form.Control name="author" autoComplete="off" required type="text" value={currentBlog.author} onChange={handleInputChange} />
@@ -40,6 +43,7 @@ const EditBlog = ({history, blogs , setBlogs}) => {
                     </Form.Group>
                     <Button variant="success" type="submit">Update Blog</Button>   <Button variant="danger" onClick={() => ( history.push('/allBlogs'))}> Cancel </Button>
                 </Form>
+                <br/>
             </Container>
         </section>
     )
