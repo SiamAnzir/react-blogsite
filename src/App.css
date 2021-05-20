@@ -58,7 +58,12 @@
   color: #47ccde;
   background-color: azure;
 }
-
+.footer{
+  padding: 2rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 
 @keyframes App-logo-spin {
   from {

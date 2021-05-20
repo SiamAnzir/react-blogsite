@@ -8,7 +8,8 @@ import {blogLists} from "./components/BlogsData";
 import AllBlogs from "./components/AllBlogs";
 import useLocalStorage from "./hooks/useLocalStorage";
 import EditBlog from "./components/EditBlog";
-import contactPage from "./components/Contact";
+import ContactPage from "./components/Contact";
+import {Footer} from "./components/Footer";
 import './App.css';
 import {ThemeContext} from "./context/ThemeContext";
 
@@ -18,35 +19,21 @@ const AppRouter = () => {
     //basename="/"
     const theme = useContext(ThemeContext);
     const [themeState, setThemeState] = useState(theme.light);
-    const darkMode = () => {
-        setThemeState(theme.dark);
-    };
-    const lightMode = () => {
-        setThemeState(theme.light);
-    };
 
     return (
         <>
             <Router>
-                <NavBar darkMode={darkMode} lightMode={lightMode} themeState={themeState} theme={theme}/>
+                <NavBar theme={theme} themeState={themeState} setThemeState={setThemeState}/>
                 <Switch>
                     <Route render={() => (<Home themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>
                     <Route render={() => (<AllBlogs themeState={themeState} blogs={blogs} setBlogs={setBlogs} />)} exact path="/allBlogs"/>
                     <Route render={(props) => (<CreateBlog  {...props} themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/createBlogs" />
                     <Route render={(props) => (<EditBlog  {...props} themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/editBlog/:id"/>
-                    <Route exact path="/contact" component={contactPage}/>
+                    <Route render={() => (<ContactPage themeState={themeState}/>)} exact path="/contact" />
                     <Route path="*" component={() => "404 NOT FOUND"} />
                 </Switch>
             </Router>
-            <footer className="border-bottom" style={{
-                backgroundColor: themeState.background,
-                color: themeState.foreground
-            }}>
-                <Container className="text-center">
-                    <br/>
-                    <p className="text-muted">Copyright &copy; React Website 2021</p>
-                </Container>
-            </footer>
+            <Footer themeState={themeState}/>
         </>
     );
 }

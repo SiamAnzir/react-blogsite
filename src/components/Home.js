@@ -7,11 +7,6 @@ import {faBan} from "@fortawesome/free-solid-svg-icons";
 
 const Home = (props) => {
 
-    /** style={{
-            backgroundColor: props.state.background,
-            color: props.state.foreground
-        }} **/
-
      const [readMore,setReadMore] = useState({id:null , readMoreState:false});
 
      const readMoreButton = (blogId) => {
@@ -35,7 +30,7 @@ const Home = (props) => {
 
 
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
-                         <Col className="col-lg-6 col-md-12" >
+                         <Col>
                              <Card border="info" style={{
                                  width: '25rem',
                                  backgroundColor: props.themeState.background,
@@ -83,7 +78,7 @@ const Home = (props) => {
                     </p>
                 </Container>
             </Jumbotron>
-            <Container style={{
+            <Container className="col-lg-8 col-md-10 mx-auto" style={{
                 color: props.themeState.foreground
             }}>
                 <h1>Favourite Blogs: </h1>

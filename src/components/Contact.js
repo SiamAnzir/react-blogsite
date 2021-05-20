@@ -12,16 +12,21 @@ import {
     faLinkedin,
     faTwitter
 } from '@fortawesome/free-brands-svg-icons';
-const contactPage = () => {
+
+const ContactPage = (props) => {
     return(
-        <section>
+        <section style={{
+            backgroundColor: props.themeState.background,
+            color: props.themeState.foreground
+        }}>
             <Container className="text-center">
                 <h2> Contact: </h2>
                 <Row className="justify-content-lg-center">
-                    <Col xs={6} md={4}>
+                    <Col>
                         <Image src={profilePic} width={300} height={300} alt="profilePic" roundedCircle/>
                     </Col>
                 </Row>
+                <br/>
                 <Row>
                     <Col>
                         <h4> Mohammed Siam Anzir </h4>
@@ -33,7 +38,7 @@ const contactPage = () => {
                             <a style={{ marginLeft: '.5rem' }} href="https://www.facebook.com/md.siamanzir/"><FontAwesomeIcon icon={faFacebook} size="3x" /></a>
                             <a style={{ marginLeft: '.5rem' }} href="https://www.instagram.com/md_siam_anzir/?hl=en"><FontAwesomeIcon icon={faInstagram} size="3x" /></a>
                             <a style={{ marginLeft: '.5rem' }} href="https://www.linkedin.com/in/mohammed-siam-anzir-087005203/"><FontAwesomeIcon icon={faLinkedin} size="3x" /></a>
-                            <a style={{ marginLeft: '.5rem' }} href="https://www.linkedin.com/in/mohammed-siam-anzir-087005203/"><FontAwesomeIcon icon={faTwitter} size="3x" /></a>
+                            <a style={{ marginLeft: '.5rem' }} href="https://www.twitter.com/"><FontAwesomeIcon icon={faTwitter} size="3x" /></a>
                         </p>
                         <p className="text-muted">Show my other projects on ~ </p>
                         <p>
@@ -48,4 +53,4 @@ const contactPage = () => {
     )
 }
 
-export default contactPage;
+export default ContactPage;

@@ -92,12 +92,14 @@ const AllBlogs = (props) => {
             backgroundColor: props.themeState.background,
             color: props.themeState.foreground
         }}>
-            <Container>
+            <Container className="pt-2">
                 <div>
                     <h1 className="text-center"> All Blogs: </h1>
                 </div>
                 <br/>
                 {Blogs}
+            </Container>
+            <Container className="pt-2 mt-3">
                 <Row className="text-center">
                     <Pagination
                         previousLabel={"prev"}
@@ -111,7 +113,6 @@ const AllBlogs = (props) => {
                         subContainerClassName={"pages pagination"}
                     />
                 </Row>
-                <br/>
             </Container>
         </section>
     );
