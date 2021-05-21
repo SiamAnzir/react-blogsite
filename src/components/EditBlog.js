@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {Button, Container, Form} from "react-bootstrap";
+import {Alert, Button, Container, Form, Row,Col} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const EditBlog = ({history, themeState, blogs , setBlogs}) => {
+
+    const [show, setShow] = useState(false);
     const { id } = useParams();
     const blogToEdit = blogs[id - 1];
     const [currentBlog, setCurrentBlog] = useState(blogToEdit);
@@ -18,7 +20,7 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         updateBlog(currentBlog.id, currentBlog);
-        history.push('/allBlogs');
+        setShow(true);
     }
     return(
         <section style={{
@@ -26,6 +28,14 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
             color: themeState.foreground
         }}>
             <Container className="text-center">
+                <Alert variant="success" onClose={() => setShow(false)} show={show}>
+                    <Row>
+                        <Col>
+                            <h5>Blog Updated Successfully</h5>
+                        </Col>
+                        <p className="text-right"><a href="/allBlogs">Go Back</a></p>
+                    </Row>
+                </Alert>
                 <br/>
                 <h2>Update Your Blog</h2>
                 <Form onSubmit={handleSubmit} >

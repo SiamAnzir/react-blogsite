@@ -1,6 +1,5 @@
 import React, {useState,useContext} from "react";
-import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
-import {Container} from "react-bootstrap";
+import {HashRouter as Router , Switch , Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
@@ -16,13 +15,12 @@ import {ThemeContext} from "./context/ThemeContext";
 const AppRouter = () => {
 
     const [blogs , setBlogs] = useLocalStorage('blogs', blogLists);
-    //basename="/"
     const theme = useContext(ThemeContext);
     const [themeState, setThemeState] = useState(theme.light);
 
     return (
         <>
-            <Router>
+            <Router basename="/">
                 <NavBar theme={theme} themeState={themeState} setThemeState={setThemeState}/>
                 <Switch>
                     <Route render={() => (<Home themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>

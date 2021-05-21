@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import {Container, Jumbotron, Card, Row, Col , Button} from "react-bootstrap";
+import {Container, Jumbotron, Card, Row, Col, Button, Table} from "react-bootstrap";
 import bgImage from "../assets/images/blog-listing.jpg";
 import blogImage from "../assets/images/background.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faBan} from "@fortawesome/free-solid-svg-icons";
+import {faBan, faBars, faPlus} from "@fortawesome/free-solid-svg-icons";
 
 const Home = (props) => {
 
@@ -15,19 +15,18 @@ const Home = (props) => {
 
      }
 
-    const readLessButton = (blogId) => {
+     const readLessButton = (blogId) => {
         setReadMore({id:blogId , readMoreState: false});
         console.log(blogId);
 
     };
 
 
-    const removeFavBlog = (blogId,selectedBlog) => {
+     const removeFavBlog = (blogId,selectedBlog) => {
          selectedBlog.favourite_blog = false;
          props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
          console.log(props.blogs);
      };
-
 
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
                          <Col>
@@ -66,6 +65,10 @@ const Home = (props) => {
                         </div>
                     ));
 
+    const countFavBlog = [];
+    props.blogs.map(blog => (blog.favourite_blog === true) ? ( countFavBlog.push(blog) ) : ( countFavBlog ) );
+    console.log(countFavBlog.length);
+
     return(
         <section style={{
             backgroundColor: props.themeState.background,
@@ -84,9 +87,23 @@ const Home = (props) => {
                 <h1>Favourite Blogs: </h1>
                 <br/>
                 <div>
-                    <Row>
-                        {favBlog}
-                    </Row>
+                    {
+                        (countFavBlog.length > 0) ? (
+                            <Row>
+                                {favBlog}
+                            </Row>
+                        ) : (
+                            <Card className="text-center" border="info" style={{
+                                backgroundColor: props.themeState.background,
+                                color: props.themeState.foreground
+                            }}>
+                                <Card.Body>
+                                    <p><FontAwesomeIcon icon={faBars} /> Favourite Blog List is Empty </p>
+                                    <p><a href="/allBlogs"> <FontAwesomeIcon icon={faPlus} />  Add Blogs to Favourites </a></p>
+                                </Card.Body>
+                            </Card>
+                        )
+                    }
                 </div>
             </Container>
         </section>

@@ -18,8 +18,7 @@ const AllBlogs = (props) => {
     const currentBlogs     = props.blogs.slice( indexOfFirstBlog, indexOfLastBlog );
 
     const handlePageChange = ( pageNumber ) => {
-        console.log( `active page is ${ pageNumber }` );
-        setCurrentPage( pageNumber )
+        setCurrentPage( pageNumber);
     };
 
     const deleteBlog = (blogId) => {

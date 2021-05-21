@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import {Container, Form, Button} from "react-bootstrap";
+import {Container, Form, Button, Toast,Alert} from "react-bootstrap";
 
 const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
+
+    const [show, setShow] = useState(false);
 
     const addBlog = (newBlog) => {
         newBlog.id = blogs.length + 1;
@@ -11,12 +13,12 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
     const initialBlogState = {id:null,title:"",description:"",author:"",created_at:new Date().toDateString(),favourite_blog:false};
     const [newBlogs , setCreatedBlogs] = useState(initialBlogState);
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         addBlog(newBlogs);
         event.target.reset();
-        history.push('/allBlogs');
+        setShow(true);
+        //history.push("/allBlogs");
     }
 
     const handleInputChange = (event) => {
@@ -24,13 +26,15 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
         setCreatedBlogs({...newBlogs , [name]:value});
     }
 
-
     return(
         <section style={{
             backgroundColor: themeState.background,
             color: themeState.foreground
         }}>
             <Container className="text-center">
+                <Alert variant="success" onClose={() => setShow(false)} show={show} dismissible>
+                    <h5>Blog Created Successfully</h5>
+                </Alert>
                 <br/>
                 <h2>Create Your Blog</h2>
                 <Form onSubmit={handleSubmit}>
@@ -46,7 +50,7 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
                         <Form.Label>Blog Description </Form.Label>
                         <Form.Control as="textarea" rows={7} name="description" autoComplete="off" required type="text" placeholder="Describe Your Blog here" onChange={handleInputChange}/>
                     </Form.Group>
-                    <Button variant="success" type="submit">Create New Blog</Button>
+                    <Button variant="success" type="submit" >Create New Blog</Button>
                 </Form>
                 <br/>
             </Container>
