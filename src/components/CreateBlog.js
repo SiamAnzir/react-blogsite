@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Container, Form, Button, Toast,Alert} from "react-bootstrap";
+import {Container, Form, Button, Alert} from "react-bootstrap";
 
 const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
 
@@ -18,7 +18,6 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
         addBlog(newBlogs);
         event.target.reset();
         setShow(true);
-        //history.push("/allBlogs");
     }
 
     const handleInputChange = (event) => {

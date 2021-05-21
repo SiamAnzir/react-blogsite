@@ -11,21 +11,16 @@ const Home = (props) => {
 
      const readMoreButton = (blogId) => {
          setReadMore({id:blogId , readMoreState: true});
-         console.log(blogId);
-
      }
 
      const readLessButton = (blogId) => {
         setReadMore({id:blogId , readMoreState: false});
-        console.log(blogId);
-
     };
 
 
      const removeFavBlog = (blogId,selectedBlog) => {
          selectedBlog.favourite_blog = false;
          props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
-         console.log(props.blogs);
      };
 
      const favBlog = props.blogs.map(blog => (blog.favourite_blog === true) ? (
@@ -67,7 +62,6 @@ const Home = (props) => {
 
     const countFavBlog = [];
     props.blogs.map(blog => (blog.favourite_blog === true) ? ( countFavBlog.push(blog) ) : ( countFavBlog ) );
-    console.log(countFavBlog.length);
 
     return(
         <section style={{

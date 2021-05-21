@@ -30,12 +30,10 @@ const AllBlogs = (props) => {
     const addToFavouriteBlog = (blogId,selectedBlog) => {
         selectedBlog.favourite_blog = true;
         props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
-        console.log(props.blogs);
     }
     const removeFromFavouriteBlog = (blogId,selectedBlog) => {
         selectedBlog.favourite_blog = false;
         props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
-        console.log(props.blogs);
     }
 
     const Blogs = props.blogs.length > 0 ? (
