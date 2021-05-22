@@ -33,7 +33,7 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
                         <Col>
                             <h5>Blog Updated Successfully</h5>
                         </Col>
-                        <a onClick={() => history.push('/allBlogs')} className="text-right">Go Back</a>
+                        <Button  onClick={() => history.push('/allBlogs')} className="text-right">Go Back</Button>
                     </Row>
                 </Alert>
                 <br/>
