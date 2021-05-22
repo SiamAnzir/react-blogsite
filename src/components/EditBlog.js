@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Alert, Button, Container, Form, Row,Col} from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams,Link  } from "react-router-dom";
 
 const EditBlog = ({history, themeState, blogs , setBlogs}) => {
 
@@ -33,7 +33,7 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
                         <Col>
                             <h5>Blog Updated Successfully</h5>
                         </Col>
-                        <p className="text-right"><a href="/allBlogs">Go Back</a></p>
+                        <p className="text-right"><Link to="/allBlogs" >Go Back</Link></p>
                     </Row>
                 </Alert>
                 <br/>
