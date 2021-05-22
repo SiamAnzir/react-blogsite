@@ -13,14 +13,17 @@ const NavBar = (props) => {
     return(
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/">
-                    <img
-                        alt="logo"
-                        src={logo}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    /> React BlogSite</Navbar.Brand>
+                <Nav className="navbar-brand">
+                    <Link to="/" className="text-white">
+                        <img
+                            alt="logo"
+                            src={logo}
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                        /> React BlogSite
+                    </Link>
+                </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
@@ -33,12 +36,12 @@ const NavBar = (props) => {
             </Container>
             {
                 (props.themeState === props.theme.light) ? (
-                    <Button variant="light" className="border-dark" onClick={darkMode}>
-                        <span role="img" aria-label="sun"> 🌞 </span>
+                    <Button variant="light"  className="border-dark" onClick={darkMode}>
+                        <span role="img" aria-label="sun">🌞</span>
                     </Button>
                 ):(
                     <Button variant="dark" className="border-light" onClick={lightMode}>
-                        <span role="img" aria-label="moon">  🌚 </span>
+                        <span role="img" aria-label="moon">🌚</span>
                     </Button>
                 )
             }

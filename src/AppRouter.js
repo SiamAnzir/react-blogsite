@@ -3,7 +3,7 @@ import {HashRouter as Router , Switch , Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
-import {blogLists} from "./components/BlogsData";
+import {blogLists} from "./store/BlogList";
 import AllBlogs from "./components/AllBlogs";
 import useLocalStorage from "./hooks/useLocalStorage";
 import EditBlog from "./components/EditBlog";
