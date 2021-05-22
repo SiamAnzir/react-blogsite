@@ -33,7 +33,7 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
                         <Col>
                             <h5>Blog Updated Successfully</h5>
                         </Col>
-                        <p className="text-right"><Link to="/allBlogs" >Go Back</Link></p>
+                        <Link to="/allBlogs" className="text-right">Go Back</Link>
                     </Row>
                 </Alert>
                 <br/>
