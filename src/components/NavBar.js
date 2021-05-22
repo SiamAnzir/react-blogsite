@@ -14,7 +14,7 @@ const NavBar = (props) => {
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
                 <Nav className="navbar-brand">
-                    <Link to="/" className="text-white">
+                    <Link to="/" className="text-white text-decoration-none">
                         <img
                             alt="logo"
                             src={logo}
@@ -27,10 +27,10 @@ const NavBar = (props) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav className="nav-link"><Link to="/" className="text-white"> Home </Link> </Nav>
-                        <Nav className="nav-link"><Link to="/allBlogs" className="text-white">All Blogs</Link> </Nav>
-                        <Nav className="nav-link"><Link to="/createBlogs" className="text-white"> Create Blogs </Link> </Nav>
-                        <Nav className="nav-link"><Link to="/contact" className="text-white"> Contact</Link> </Nav>
+                        <Nav className="nav-link"><Link to="/" className="text-white text-decoration-none"> Home </Link> </Nav>
+                        <Nav className="nav-link"><Link to="/allBlogs" className="text-white text-decoration-none">All Blogs</Link> </Nav>
+                        <Nav className="nav-link"><Link to="/createBlogs" className="text-white text-decoration-none"> Create Blogs </Link> </Nav>
+                        <Nav className="nav-link"><Link to="/contact" className="text-white text-decoration-none"> Contact</Link> </Nav>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
