@@ -85,11 +85,11 @@ const AllBlogs = (props) => {
         <div><h2>There is nothing to show</h2></div>
     )
     return(
-        <section style={{
+        <section className="mainContent" style={{
             backgroundColor: props.themeState.background,
             color: props.themeState.foreground
         }}>
-            <Container className="pt-2">
+            <Container>
                 <div>
                     <h1 className="text-center"> All Blogs: </h1>
                 </div>

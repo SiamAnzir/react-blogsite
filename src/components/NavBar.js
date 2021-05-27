@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Container, Nav, Navbar} from "react-bootstrap";
+import { OverlayTrigger,Tooltip, Container, Nav, Navbar} from "react-bootstrap";
 import logo from "../logo.svg";
 import {Link} from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faMoon} from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = (props) => {
     const darkMode = () => {
@@ -35,14 +37,18 @@ const NavBar = (props) => {
                 </Navbar.Collapse>
             </Container>
             {
-                (props.themeState === props.theme.light) ? (
-                    <Button variant="light"  className="border-dark" onClick={darkMode}>
-                        <span role="img" aria-label="sun">🌞</span>
-                    </Button>
+                (props.themeState === props.theme.dark) ? (
+                    <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode Off </Tooltip>}>
+                            <span onClick={lightMode} style={{cursor:"pointer"}}>
+                                <FontAwesomeIcon icon={faMoon} color="white"/>
+                            </span>
+                    </OverlayTrigger>
                 ):(
-                    <Button variant="dark" className="border-light" onClick={lightMode}>
-                        <span role="img" aria-label="moon">🌚</span>
-                    </Button>
+                    <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode On </Tooltip>}>
+                            <span role="img" aria-label="sun" onClick={darkMode} style={{cursor:"pointer"}}>
+                                🌞
+                            </span>
+                    </OverlayTrigger>
                 )
             }
         </Navbar>

@@ -23,7 +23,7 @@ const EditBlog = ({history, themeState, blogs , setBlogs}) => {
         setShow(true);
     }
     return(
-        <section style={{
+        <section className="mainContent" style={{
             backgroundColor: themeState.background,
             color: themeState.foreground
         }}>

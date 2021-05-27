@@ -26,7 +26,7 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
     }
 
     return(
-        <section style={{
+        <section className="mainContent" style={{
             backgroundColor: themeState.background,
             color: themeState.foreground
         }}>

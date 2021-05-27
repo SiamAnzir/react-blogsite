@@ -64,7 +64,7 @@ const Home = (props) => {
     props.blogs.map(blog => (blog.favourite_blog === true) ? ( countFavBlog.push(blog) ) : ( countFavBlog ) );
 
     return(
-        <section style={{
+        <section className="mainContent" style={{
             backgroundColor: props.themeState.background,
         }}>
             <Jumbotron style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', height: '400px' }} fluid>

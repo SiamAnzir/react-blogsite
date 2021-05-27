@@ -15,7 +15,7 @@ import {
 
 const ContactPage = (props) => {
     return(
-        <section style={{
+        <section className="mainContent" style={{
             backgroundColor: props.themeState.background,
             color: props.themeState.foreground
         }}>
