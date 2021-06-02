@@ -40,9 +40,6 @@ const AllBlogs = (props) => {
         props.setBlogs(props.blogs.map(blog => (blog.id === blogId ? selectedBlog : blog)));
     }
 
-    //const res = props.blogs.reverse();
-    //console.log(res);
-
     const Blogs = props.blogs.length > 0 ? (
         currentBlogs.map(blog => (
             <>

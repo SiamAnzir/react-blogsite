@@ -73,6 +73,9 @@ const Home = (props) => {
                     <p className="lead">
                         Create Your Own blog, Update it whenever it needs, Delete it if you don't like it and also Read other's Blog.!!
                     </p>
+                    <p>
+                        Currently This Blog Site using your Browser Local Storage for saving your blogs. Also it has some initialized blogs which was given as examples.
+                    </p>
                 </Container>
             </Jumbotron>
             <Container className="col-lg-8 col-md-10 mx-auto" style={{
