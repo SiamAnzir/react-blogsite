@@ -1,5 +1,5 @@
 import React, {useState,useContext} from "react";
-import {HashRouter as Router , Switch , Route} from "react-router-dom";
+import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
@@ -20,7 +20,7 @@ const AppRouter = () => {
 
     return (
         <>
-            <Router basename="/">
+            <Router>
                 <NavBar theme={theme} themeState={themeState} setThemeState={setThemeState}/>
                 <Switch>
                     <Route render={() => (<Home themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>

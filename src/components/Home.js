@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Container, Jumbotron, Card, Row, Col, Button, Table} from "react-bootstrap";
+import {Container, Jumbotron, Card, Row, Col, Button} from "react-bootstrap";
 import bgImage from "../assets/images/blog-listing.jpg";
 import blogImage from "../assets/images/background.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

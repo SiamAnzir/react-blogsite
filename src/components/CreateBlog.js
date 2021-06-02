@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-import {Container, Form, Button, Alert} from "react-bootstrap";
+import {Container, Form, Button, Alert, Col, Row, OverlayTrigger,Tooltip} from "react-bootstrap";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
 
@@ -32,7 +34,14 @@ const CreateBlog = ({history,themeState,blogs,setBlogs}) => {
         }}>
             <Container className="text-center">
                 <Alert variant="success" onClose={() => setShow(false)} show={show} dismissible>
-                    <h5>Blog Created Successfully</h5>
+                    <Row>
+                        <Col>
+                            <h5>Blog Created Successfully</h5>
+                        </Col>
+                        <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> See All Blogs </Tooltip>}>
+                            <span onClick={() => history.push('/allBlogs')} className="text-right" style={{cursor:"pointer"}}> <FontAwesomeIcon icon={faBars} /> </span>
+                        </OverlayTrigger>
+                    </Row>
                 </Alert>
                 <br/>
                 <h2>Create Your Blog</h2>
