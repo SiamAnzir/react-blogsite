@@ -37,16 +37,16 @@ const NavBar = (props) => {
                 </Navbar.Collapse>
             </Container>
             {
-                (props.themeState === props.theme.dark) ? (
-                    <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode Off </Tooltip>}>
-                            <span onClick={lightMode} style={{cursor:"pointer"}}>
-                                <FontAwesomeIcon icon={faMoon} color="white"/>
-                            </span>
-                    </OverlayTrigger>
-                ):(
+                (props.themeState === props.theme.light) ? (
                     <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode On </Tooltip>}>
                             <span role="img" aria-label="sun" onClick={darkMode} style={{cursor:"pointer"}}>
                                 🌞
+                            </span>
+                    </OverlayTrigger>
+                ):(
+                    <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode Off </Tooltip>}>
+                            <span onClick={lightMode} style={{cursor:"pointer"}}>
+                                <FontAwesomeIcon icon={faMoon} color="white"/>
                             </span>
                     </OverlayTrigger>
                 )

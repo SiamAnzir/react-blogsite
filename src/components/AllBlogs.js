@@ -10,16 +10,12 @@ const AllBlogs = (props) => {
 
     const history = useHistory();
 
-    const blogsOrder = props.blogs.sort((firstBlog,secondBlog) => {
-        return secondBlog.id - firstBlog.id
-    });
-
     const blogsPerPage = 2;
     const [ activePage, setCurrentPage ] = useState( 1 );
 
     const indexOfLastBlog  = activePage * blogsPerPage;
     const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-    const currentBlogs     = blogsOrder.slice( indexOfFirstBlog, indexOfLastBlog );
+    const currentBlogs     = props.blogs.slice( indexOfFirstBlog, indexOfLastBlog );
 
     const handlePageChange = ( pageNumber ) => {
         setCurrentPage( pageNumber);
