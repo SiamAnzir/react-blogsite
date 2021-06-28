@@ -20,7 +20,7 @@ const AppRouter = () => {
 
     return (
         <>
-            <Router basename="/">
+            <Router basename='/'>
                 <NavBar theme={theme} themeState={themeState} setThemeState={setThemeState}/>
                 <Switch>
                     <Route render={() => (<Home themeState={themeState} blogs={blogs} setBlogs={setBlogs}/>)} exact path="/"/>
