@@ -1,4 +1,4 @@
-import React, {useState,useContext} from "react";
+import React, {useContext} from "react";
 import {HashRouter as Router , Switch , Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
@@ -16,7 +16,7 @@ const AppRouter = () => {
 
     const [blogs , setBlogs] = useLocalStorage('blogs', blogLists);
     const theme = useContext(ThemeContext);
-    const [themeState, setThemeState] = useState(theme.light);
+    const [themeState, setThemeState] = useLocalStorage('theme', theme.light);
 
     return (
         <>

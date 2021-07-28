@@ -1,3 +1,5 @@
+// noinspection RequiredAttributes
+
 import React from "react";
 import { OverlayTrigger,Tooltip, Container, Nav, Navbar} from "react-bootstrap";
 import logo from "../logo.svg";
@@ -37,7 +39,7 @@ const NavBar = (props) => {
                 </Navbar.Collapse>
             </Container>
             {
-                (props.themeState === props.theme.light) ? (
+                (props.themeState.background === props.theme.light.background) ? (
                     <OverlayTrigger key="bottom" placement="bottom" overlay={<Tooltip id={'tooltip-bottom'}> Turn Dark Mode On </Tooltip>}>
                             <span role="img" aria-label="sun" onClick={darkMode} style={{cursor:"pointer"}}>
                                 🌞
